@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { withLDProvider } from 'launchdarkly-react-client-sdk';
+
+import FeatureFlag from './featureFlag';
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <FeatureFlag />    
       </header>
     </div>
   );
 }
 
-export default App;
+export default withLDProvider({
+  clientSideID: '605d53fb54f4ad0e53aaf7f5',
+  user: {
+    "key": "605d53fb54f4ad0e53aaf7f5",
+    "name": "Johnny Parham",
+    "email": "johnny.parham@gmail.com"
+  },
+  options: { /* ... */ }
+})(App);
